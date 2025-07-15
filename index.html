@@ -134,18 +134,43 @@
       <p>📱 WhatsApp: <a href="https://wa.me/919528529070" target="_blank">+91 9528529070</a></p>
       <p>📧 Email: <a href="mailto:rishabhrj0308@gmail.com">rishabhrj0308@gmail.com</a></p>
 
-      <form id="contactForm">
-        <div class="mb-3">
-          <input type="text" class="form-control" name="name" placeholder="Your Name" required>
-        </div>
-        <div class="mb-3">
-          <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-        </div>
-        <div class="mb-3">
-          <textarea class="form-control" name="message" rows="4" placeholder="Your Message"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-      </form>
+     <form id="contactForm">
+  <div class="mb-3">
+    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+  </div>
+  <div class="mb-3">
+    <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+  </div>
+  <div class="mb-3">
+    <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Send via WhatsApp</button>
+</form>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Get values
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    // Format the WhatsApp message
+    const whatsappMessage = `Hello, I'm *${name}*.\nEmail: ${email}\nMessage: ${message}`;
+    
+    // Replace with your WhatsApp number (use country code without +)
+    const phoneNumber = "919528529070";
+
+    // Redirect to WhatsApp
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(url, "_blank");
+
+    // Optional: Reset the form
+    this.reset();
+  });
+</script>
+
     </div>
   </section>
 
